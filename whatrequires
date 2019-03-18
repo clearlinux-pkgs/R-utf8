@@ -1,2 +1,11 @@
 # This file contains recursive sources that require this package
+R-dbplyr
+R-ggridges
+R-haven
+R-janitor
 R-pillar
+R-readxl
+R-recipes
+R-rsample
+R-styler
+R-tidyr

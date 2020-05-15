@@ -4,7 +4,7 @@
 #
 Name     : R-utf8
 Version  : 1.1.4
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/utf8_1.1.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/utf8_1.1.4.tar.gz
 Summary  : Unicode Text Processing
@@ -14,10 +14,14 @@ Requires: R-utf8-lib = %{version}-%{release}
 BuildRequires : buildreq-R
 
 %description
-utf8lite (C Library)
-====================
-[![Build Status](https://api.travis-ci.org/patperry/utf8lite.svg?branch=master)](https://travis-ci.org/patperry/utf8lite)
-[![Coverage Status](https://codecov.io/github/patperry/utf8lite/coverage.svg?branch=master)](https://codecov.io/github/patperry/utf8lite?branch=master)
+utf8
+====
+[![Build Status (Linux)][travis-badge]][travis]
+[![Build Status (Windows)][appveyor-badge]][appveyor]
+[![Coverage Status][codecov-badge]][codecov]
+[![CRAN Status][cran-badge]][cran]
+[![License][apache-badge]][apache]
+[![CRAN RStudio Mirror Downloads][cranlogs-badge]][cran]
 
 %package lib
 Summary: lib components for the R-utf8 package.
@@ -29,21 +33,22 @@ lib components for the R-utf8 package.
 
 %prep
 %setup -q -c -n utf8
+cd %{_builddir}/utf8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552943371
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1589509800
 
 %install
-export SOURCE_DATE_EPOCH=1552943371
+export SOURCE_DATE_EPOCH=1589509800
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -69,12 +74,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  utf8 || :
+R CMD check --no-manual --no-examples --no-codoc utf8 || :
 
 
 %files

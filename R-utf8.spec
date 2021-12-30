@@ -4,7 +4,7 @@
 #
 Name     : R-utf8
 Version  : 1.2.2
-Release  : 37
+Release  : 38
 URL      : https://cran.r-project.org/src/contrib/utf8_1.2.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/utf8_1.2.2.tar.gz
 Summary  : Unicode Text Processing

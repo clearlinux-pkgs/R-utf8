@@ -4,7 +4,7 @@
 #
 Name     : R-utf8
 Version  : 1.2.3
-Release  : 46
+Release  : 47
 URL      : https://cran.r-project.org/src/contrib/utf8_1.2.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/utf8_1.2.3.tar.gz
 Summary  : Unicode Text Processing
@@ -13,9 +13,6 @@ License  : Apache-2.0 ICU
 Requires: R-utf8-lib = %{version}-%{release}
 Requires: R-utf8-license = %{version}-%{release}
 BuildRequires : buildreq-R
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 text (Unicode). Input, validate, normalize, encode, format, and
@@ -47,10 +44,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1675210549
+export SOURCE_DATE_EPOCH=1678827300
 
 %install
-export SOURCE_DATE_EPOCH=1675210549
+export SOURCE_DATE_EPOCH=1678827300
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-utf8
 cp %{_builddir}/utf8/LICENSE %{buildroot}/usr/share/package-licenses/R-utf8/2b8b815229aa8a61e483fb4ba0588b8b6c491890 || :
